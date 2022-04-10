@@ -6,7 +6,8 @@ const getState = ({ getStore, setStore, getActions }) => {
             userData: null,
             isLoggedin: false,
             token:"token",
-            repos:[]
+            repos:[],
+            issues:[]
         },
         actions: {
             getToken:(token)=>{
@@ -34,6 +35,18 @@ const getState = ({ getStore, setStore, getActions }) => {
                     }).catch(error=>{
                         console.log(error)
                         setStore({isLoggedin:false})
+                    })
+            },
+            getIssues:(issues_url, token)=>{
+                fetch(issues_url, {
+                    headers: {
+                        "Authorization": `Token ${token}`
+                    }
+                })
+                    // Parse the response as JSON
+                    .then(res => res.json())
+                    .then(res => {
+                        setStore({issues:res})
                     })
             },
         }

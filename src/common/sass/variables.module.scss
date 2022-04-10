@@ -1,0 +1,33 @@
+/* RESPONSIVE */
+
+// xl breakpoint
+$xl_min: 1900;
+$xl_row_width_fixed: 1600;
+// l breakpoint
+$l_min: 1500;
+$l_max: 1899;
+$l_row_width_fixed: 1200;
+// m breakpoint
+$m_min: 1024;
+$m_max: 1499;
+$m_row_width_fixed:  1024;
+// s breakpoint
+$s_min: 768;
+$s_max: 1023;
+// xs breakpoint
+$xs_min: 375;
+$xs_max: 767;
+$xxs_max: 374;
+$xxxs_min: 320;
+
+// mixins for screen sizes
+@mixin xs-min-screen-view { @media screen and (min-width: #{$xxxs_min}px) { @content; }}
+@mixin xxs-screen-view { @media screen and (max-width: #{$xxs_max}px) { @content; }}
+//xs-screen-view has no min, so styles include xxs size
+@mixin xs-screen-view { @media screen and (max-width: #{$xs_max}px) { @content; }}
+//only-xs-view has a min and max, allowing for styles just within xs screen size
+@mixin only-xs-view { @media screen and (min-width: #{$xs_min}px) and (max-width: #{$xs_max}px) { @content; }}
+@mixin s-screen-view { @media screen and (min-width: #{$s_min}px) and (max-width: #{$s_max}px) { @content; }}
+@mixin m-screen-view { @media screen and (min-width: #{$m_min}px) and (max-width: #{$m_max}px) { @content; }}
+@mixin l-screen-view { @media screen and (min-width: #{$l_min}px) and (max-width: #{$l_max}px) { @content; }}
+@mixin xl-screen-view { @media screen and (min-width: #{$xl_min}px) { @content; }}
