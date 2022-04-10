@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
+import Home from "./pages/Home";
+import injectContext from "./store/appContext";
 
 
 const Navigation = () => {
@@ -10,7 +12,7 @@ const Navigation = () => {
 				<div>
 					<Routes>
 						<Route exact path="/" element={<Login />} />
-						{/* <Route path="/home" element={<Home />} /> */}
+						<Route path="/home" element={<Home />} />
 						<Route render={() => <h1 className="notfound">Not found!</h1>} />
 					</Routes>
 				</div>
@@ -19,4 +21,4 @@ const Navigation = () => {
 	);
 };
 
-export default Navigation;
+export default injectContext(Navigation);
