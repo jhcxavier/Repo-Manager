@@ -1,0 +1,41 @@
+.image{
+    height: 100px;
+    width: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+.header{
+    display: table;
+    margin: 0 auto;
+    
+}
+.apiKey{
+    background-color: #0869DA;
+    color:white;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding: 2px;
+    font-size: 12px;
+    padding-left:5px;
+    padding-right: 5px;
+}
+.content{
+    margin-top:50px;
+   display: flex;
+   justify-content: center;
+}
+input{
+    border-radius: 0;
+    border: 1px solid #0869DA;
+    border-right: 1px solid #2EA44F;
+    width: 160px;
+}
+button{
+    background-color: #2EA44F;
+    color:white;
+    border:none;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
