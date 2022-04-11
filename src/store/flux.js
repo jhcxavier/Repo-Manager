@@ -19,6 +19,7 @@ const getState = ({ getStore, setStore, getActions }) => {
                         "Authorization": `Token ${token}`
                     }
                 })
+                
                     .then(res => res.json())
                     .then(res => {
                         setStore({token:token})
@@ -44,7 +45,6 @@ const getState = ({ getStore, setStore, getActions }) => {
 
                     .then(res => res.json())
                     .then(res => {
-                        console.log(res)
                         setStore({issues:res})
                     })
             },
