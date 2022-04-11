@@ -3,20 +3,21 @@ import Repos from '../../components/Repo';
 import { Context } from '../../store/appContext';
 import style from "./index.module.scss";
 import Issues from '../../components/Issue';
-import DragNDrop from '../../components/DragNDrop';
+import { useNavigate } from 'react-router-dom';
+// import DragNDrop from '../../components/DragNDrop';
 
 
 const Home = () => {
-    const { store } = useContext(Context)
-    const repos = store.repos
+    const { store, actions } = useContext(Context)
     const [issues, setIssues] = useState([])
-   
-
+    const repos = store.repos
+    const navigate = useNavigate()
+    
     useEffect(() => {
-        console.log("state")
         setIssues(store.issues)
-      
+        
     }, [store.issues])
+
     return (
         <>
         <div className={style.root}>
@@ -31,10 +32,9 @@ const Home = () => {
                 </div>
                 <div className={style.column}>
                     
-                    {issues.map(issue => (
+                    {issues&&issues.map(issue => (
                         <Issues key={issue.id} issue={issue} />
                     ))}
-                   {/* {store.issues && <DragNDrop list={issues}/>} */}
                 </div>
             </div>
 

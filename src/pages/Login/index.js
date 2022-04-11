@@ -6,17 +6,11 @@ import style from "./index.module.scss";
 
 const Login = () => {
     const { store, actions } = useContext(Context)
-    const [apiToken, setApiToken] = useState("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");
+    const [apiToken, setApiToken] = useState("");
     const [isConnected, setIsConnected] = useState(store.isLoggedin)
     const navigate = useNavigate()
-    console.log("isConnected", isConnected)
 
-    useEffect(() => {
-        if (isConnected) {
-            navigate("/home")
-        }
-    }, [isConnected])
-
+    
     return (
         <>
             <div className={style.header}>
@@ -26,13 +20,11 @@ const Login = () => {
             <div className={style.content}>
                 <span className={style.apiKey}>Api Key</span>
                 <input onChange={(e) => setApiToken(e.target.value)} />
-                <button onClick={() => {
-                    try {
+                <button className={style.connect}onClick={() => {
+                    
                         actions.getData(1, apiToken)
-                        navigate('home')
-                    } catch (e) {
-                        alert('faild')
-                    }
+                        navigate("/home")
+                  
                 }}>Connect</button>
 
             </div>

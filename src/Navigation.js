@@ -12,7 +12,7 @@ const Navigation = () => {
 				<div>
 					<Routes>
 						<Route exact path="/" element={<Login />} />
-						<Route path="/home" element={<Home />} />
+						<Route exact path="/home" element={<Home />} />
 						<Route render={() => <h1 className="notfound">Not found!</h1>} />
 					</Routes>
 				</div>

@@ -5,7 +5,6 @@ import { lastUpdate } from './utils';
 
 const Issues=({issue})=>{
     const currentDate = new Date().toJSON().slice(0,10).replace(/-/g,'/');
-console.log("issue", issue)
     return(
         <div className={style.issueWrapper}>
             {/* Add alt attribute to image to improve SEO*/}

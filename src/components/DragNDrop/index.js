@@ -22,6 +22,7 @@
 //     setItemList(updatedList);
 //   };
 
+
 //   return (
 //     <div className="App">
 //       <DragDropContext onDragEnd={handleDrop}>
@@ -32,18 +33,13 @@
 //               {...provided.droppableProps}
 //               ref={provided.innerRef}
 //             >
-//               {itemList.map((item, index) => (
-//                 <Draggable key={item} draggableId={item} index={index}>
-//                   {(provided) => (
-//                     <div
-//                       className="item-container"
-//                       ref={provided.innerRef}
-//                       {...provided.dragHandleProps}
-//                       {...provided.draggableProps}
-//                     >
-//                       {item}
-//                       <Issues  />
-//                     </div>
+//               {store.issues.map((item, index) => (
+//                 <Draggable key={index} draggableId={index} index={index}>
+//                   {(provided, snapshot) => (
+                   
+                      
+//                       <Issues  issue={item} provided={provided} snapshot={snapshot}/>
+               
 //                   )}
 //                 </Draggable>
 //               ))}
