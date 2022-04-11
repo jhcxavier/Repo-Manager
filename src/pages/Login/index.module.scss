@@ -11,6 +11,9 @@
     margin: 0 auto;
     
 }
+.title{
+    text-align: center;
+}
 .apiKey{
     background-color: #0869DA;
     color:white;
@@ -38,4 +41,12 @@ input{
     border:none;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
+}
+.panel{
+    margin-top: 15px;
+    background-color: #F6F8FA;
+    padding:15px;
+    border-radius: 10px;
+    color:gray;
+    
 }
