@@ -4,60 +4,80 @@ import { Context } from '../../store/appContext';
 import style from "./index.module.scss";
 import Issues from '../../components/Issue';
 import { useNavigate } from 'react-router-dom';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 // import DragNDrop from '../../components/DragNDrop';
 
 
 const Home = () => {
-    const { store, actions } = useContext(Context)
+    const { store } = useContext(Context)
 
     const [issues, setIssues] = useState(store.issues)
     const [repos, setRepos] = useState([])
 
-    useEffect(()=>{
+    useEffect(() => {
         const sessionRepos = JSON.parse(window.sessionStorage.getItem("repos"))
-        if(store.repos.length > 0){
+        if (store.repos.length > 0) {
             setRepos(store.repos)
             window.sessionStorage.setItem("repos", JSON.stringify(store.repos));
-        }else{
+        } else {
             setRepos(sessionRepos)
         }
-    },[store.repos])
+    }, [store.repos])
 
     useEffect(() => {
-        console.log("issues", issues)
         const sessionIssues = JSON.parse(window.sessionStorage.getItem("issues"))
-        if(store.issues.length > 0){
+        if (store.issues.length > 0) {
+
             setIssues(store.issues)
             window.sessionStorage.setItem("issues", JSON.stringify(store.issues));
-        }else{
+        } else {
             setIssues(sessionIssues)
         }
     }, [store.issues])
 
-
-   
+    const handleDragEnd = (result) => {
+        if (!result.destination) return;
+        let updatedList = [...issues];
+        const [reorderedItem] = updatedList.splice(result.source.index, 1);
+        updatedList.splice(result.destination.index, 0, reorderedItem);
+        window.sessionStorage.setItem("issues", JSON.stringify(updatedList));
+        setIssues(updatedList);
+    }
     return (
         <>
-        <div className={style.root}>
-            <div className={style.row}>
-                <div className={style.column}>
-                    
-                    {repos&&repos.map(repo => (
-                        <div key={repo.id}>
-                            <Repos repository={repo} />
-                        </div>
-                    ))}
-                    {/* {RenderRepos()} */}
-                </div>
-                <div className={style.column}>
-                    
-                    {issues&&issues.map(issue => (
-                        <Issues key={issue.id} issue={issue} />
-                    ))}
+            <div className={style.root}>
+                <div className={style.row}>
+                    <div className={style.column} >
+                        {repos && repos.map((repo, index) => (
+                            <div key={repo.id}>
+                                <Repos repository={repo} index={index} />
+                            </div>
+                        ))}
+                    </div>
+                    {issues && issues.length > 0 ?
+                        <DragDropContext onDragEnd={handleDragEnd}>
+                            <Droppable droppableId='issues'>
+                                {(provided) => (
+                                    <ul className={style.column} {...provided.droppableProps} ref={provided.innerRef}>
+                                        {issues && issues.map((issue, index) => (
+                                            <Draggable key={issue.id} draggableId={issue.id} index={index}>
+                                                {(provided) => (
+                                                    <li {...provided.draggableProps}
+                                                        {...provided.dragHandleProps}
+                                                        ref={provided.innerRef} >
+                                                        <Issues
+                                                            issue={issue} />
+                                                    </li>
+                                                )}
+                                            </Draggable>
+                                        ))}
+                                        {provided.placeholder}
+                                    </ul>
+                                )}
+                            </Droppable>
+                        </DragDropContext> : <div className={style.column} />}
                 </div>
             </div>
-
-        </div>
         </>
     )
 }

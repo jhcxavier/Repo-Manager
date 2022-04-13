@@ -26,7 +26,6 @@ const getState = ({ getStore, setStore, getActions }) => {
                     setStore({ token: token })
                     setStore({ repos: [...getStore().repos, ...res.items] })
                     setStore({ isLoggedin: true })
-
                     if (res.total_count > reposPerPage && res.items.length > 0) {
                         getActions().getData(page + 1, token, user)
                     } else {
@@ -40,18 +39,21 @@ const getState = ({ getStore, setStore, getActions }) => {
                 })
             },
             getIssues: (issues_url, token) => {
-
                 fetch(issues_url, {
                     headers: {
                         "Authorization": `Token ${token}`
                     }
                 })
-                    .then(res => res.json())
-                    .then(res => {
-                        setStore({ issues: res })
-                    }).catch(error => {
-                        console.log(error)
+                .then(res => res.json())
+                .then(res => {
+                    const result = res.map((e)=>{
+                        e.id = e.id.toString()
+                        return e
                     })
+                    setStore({ issues: result })
+                }).catch(error => {
+                    console.log(error)
+                })
             },
         }
     };
