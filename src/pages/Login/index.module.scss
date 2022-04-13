@@ -14,15 +14,17 @@
 .title{
     text-align: center;
 }
-.apiKey{
-    background-color: #0869DA;
-    color:white;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
-    padding: 2px;
+.label{
+    // background-color: #0869DA;
+    color:#0869DA;
+    font-weight: bold;
+  
+    // padding: 2px;
     font-size: 12px;
-    padding-left:5px;
-    padding-right: 5px;
+    
+}
+.labelWrapper{
+    margin-top: 10px;
 }
 .content{
     margin-top:50px;
@@ -32,15 +34,13 @@
 input{
     border-radius: 0;
     border: 1px solid #0869DA;
-    border-right: 1px solid #2EA44F;
-    width: 160px;
+    width: 97%;
 }
 .connect{
+    margin-top: 10px;
     background-color: #2EA44F;
     color:white;
     border:none;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
 }
 .panel{
     margin-top: 15px;
@@ -49,4 +49,7 @@ input{
     border-radius: 10px;
     color:gray;
     
+}
+.content{
+    display: grid;
 }

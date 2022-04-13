@@ -5,12 +5,10 @@ import style from "./index.module.scss";
 
 
 const Login = () => {
-    const { store, actions } = useContext(Context)
+    const { actions } = useContext(Context)
     const [apiToken, setApiToken] = useState("");
-    const [isConnected, setIsConnected] = useState(store.isLoggedin)
+    const [user, setUser] = useState("")
     const navigate = useNavigate()
-
-
     return (
         <>
             <div className={style.header}>
@@ -30,15 +28,23 @@ const Login = () => {
             </div>
 
             <div className={style.content}>
-                <span className={style.apiKey}>Api Key</span>
-                <input onChange={(e) => setApiToken(e.target.value)} />
+                <div className={style.labelWrapper}>
+                <span className={style.label}>Username</span>
+                    <input onChange={(e) => setUser(e.target.value)} />
+                </div>
+                <div className={style.labelWrapper}>
+                    <span className={style.label}>Api Key</span>
+                    <input onChange={(e) => setApiToken(e.target.value)} />
+                </div>
+
                 <button className={style.connect} onClick={() => {
+                        window.sessionStorage.setItem("issues", null);
+                        window.sessionStorage.setItem("repos", null);
+                        actions.getData(1, apiToken, user)
+                        navigate("/home")
 
-                    actions.getData(1, apiToken)
-                    navigate("/home")
 
-                }}>Connect</button>
-
+                    }}>Connect</button>
             </div>
         </>
     )
