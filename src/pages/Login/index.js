@@ -12,8 +12,11 @@ const Login = () => {
     return (
         <>
             <div className={style.header}>
+                <div className={style.headerWrapper}>
                 <div className={style.title}><h1>Repo Management</h1></div>
                 <div><img className={style.image} src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" /></div>
+                </div>
+               
                 <div className={style.panel}>
                     <ol>
                         <li>To Successful run this app you need to access your Github account.</li>

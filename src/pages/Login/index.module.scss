@@ -1,3 +1,4 @@
+@import "../../common/sass/variables.module.scss";
 .image{
     height: 100px;
     width: auto;
@@ -9,7 +10,18 @@
 .header{
     display: table;
     margin: 0 auto;
-    
+}
+.headerWrapper{
+    @include s-screen-view{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    @include xs-screen-view{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 .title{
     text-align: center;
@@ -43,12 +55,24 @@ input{
     border:none;
 }
 .panel{
+    @include s-screen-view{
+        width: 335px;
+        margin-top:5px;
+        padding:5px;
+        border-radius: 5px;
+    }
+    @include xs-screen-view{
+        width: 335px;
+        margin-top:5px;
+        padding:5px;
+        border-radius: 5px;
+    }
     margin-top: 15px;
     background-color: #F6F8FA;
     padding:15px;
     border-radius: 10px;
     color:gray;
-    
+   
 }
 .content{
     display: grid;
