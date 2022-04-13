@@ -5,7 +5,6 @@ import style from "./index.module.scss";
 import Issues from '../../components/Issue';
 import { useNavigate } from 'react-router-dom';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-// import DragNDrop from '../../components/DragNDrop';
 
 
 const Home = () => {
