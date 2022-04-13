@@ -57,26 +57,6 @@ sast:
   script:
     - /analyzer run
 
-bandit-sast:
-  extends: .sast-analyzer
-  image:
-    name: "$SAST_ANALYZER_IMAGE_PREFIX/bandit:$SAST_ANALYZER_IMAGE_TAG"
-  only:
-    variables:
-      - $GITLAB_FEATURES =~ /\bsast\b/ &&
-          $SAST_DEFAULT_ANALYZERS =~ /bandit/&&
-          $CI_PROJECT_REPOSITORY_LANGUAGES =~ /python/
-
-brakeman-sast:
-  extends: .sast-analyzer
-  image:
-    name: "$SAST_ANALYZER_IMAGE_PREFIX/brakeman:$SAST_ANALYZER_IMAGE_TAG"
-  only:
-    variables:
-      - $GITLAB_FEATURES =~ /\bsast\b/ &&
-          $SAST_DEFAULT_ANALYZERS =~ /brakeman/ &&
-          $CI_PROJECT_REPOSITORY_LANGUAGES =~ /ruby/
-
 eslint-sast:
   extends: .sast-analyzer
   image:
@@ -86,36 +66,6 @@ eslint-sast:
       - $GITLAB_FEATURES =~ /\bsast\b/ &&
           $SAST_DEFAULT_ANALYZERS =~ /eslint/ &&
           $CI_PROJECT_REPOSITORY_LANGUAGES =~ /javascript/
-
-flawfinder-sast:
-  extends: .sast-analyzer
-  image:
-    name: "$SAST_ANALYZER_IMAGE_PREFIX/flawfinder:$SAST_ANALYZER_IMAGE_TAG"
-  only:
-    variables:
-      - $GITLAB_FEATURES =~ /\bsast\b/ &&
-          $SAST_DEFAULT_ANALYZERS =~ /flawfinder/ &&
-          $CI_PROJECT_REPOSITORY_LANGUAGES =~ /\b(c\+\+|c)\b/
-
-kubesec-sast:
-  extends: .sast-analyzer
-  image:
-    name: "$SAST_ANALYZER_IMAGE_PREFIX/kubesec:$SAST_ANALYZER_IMAGE_TAG"
-  only:
-    variables:
-      - $GITLAB_FEATURES =~ /\bsast\b/ &&
-          $SAST_DEFAULT_ANALYZERS =~ /kubesec/ &&
-          $SCAN_KUBERNETES_MANIFESTS == 'true'
-
-gosec-sast:
-  extends: .sast-analyzer
-  image:
-    name: "$SAST_ANALYZER_IMAGE_PREFIX/gosec:$SAST_ANALYZER_IMAGE_TAG"
-  only:
-    variables:
-      - $GITLAB_FEATURES =~ /\bsast\b/ &&
-          $SAST_DEFAULT_ANALYZERS =~ /gosec/ &&
-          $CI_PROJECT_REPOSITORY_LANGUAGES =~ /\bgo\b/
 
 nodejs-scan-sast:
   extends: .sast-analyzer
@@ -127,35 +77,6 @@ nodejs-scan-sast:
           $SAST_DEFAULT_ANALYZERS =~ /nodejs-scan/ &&
           $CI_PROJECT_REPOSITORY_LANGUAGES =~ /javascript/
 
-phpcs-security-audit-sast:
-  extends: .sast-analyzer
-  image:
-    name: "$SAST_ANALYZER_IMAGE_PREFIX/phpcs-security-audit:$SAST_ANALYZER_IMAGE_TAG"
-  only:
-    variables:
-      - $GITLAB_FEATURES =~ /\bsast\b/ &&
-          $SAST_DEFAULT_ANALYZERS =~ /phpcs-security-audit/ &&
-          $CI_PROJECT_REPOSITORY_LANGUAGES =~ /php/
-
-pmd-apex-sast:
-  extends: .sast-analyzer
-  image:
-    name: "$SAST_ANALYZER_IMAGE_PREFIX/pmd-apex:$SAST_ANALYZER_IMAGE_TAG"
-  only:
-    variables:
-      - $GITLAB_FEATURES =~ /\bsast\b/ &&
-          $SAST_DEFAULT_ANALYZERS =~ /pmd-apex/ &&
-          $CI_PROJECT_REPOSITORY_LANGUAGES =~ /apex/
-
-secrets-sast:
-  extends: .sast-analyzer
-  image:
-    name: "$SAST_ANALYZER_IMAGE_PREFIX/secrets:$SAST_ANALYZER_IMAGE_TAG"
-  only:
-    variables:
-      - $GITLAB_FEATURES =~ /\bsast\b/ &&
-          $SAST_DEFAULT_ANALYZERS =~ /secrets/
-
 security-code-scan-sast:
   extends: .sast-analyzer
   image:
@@ -165,26 +86,6 @@ security-code-scan-sast:
       - $GITLAB_FEATURES =~ /\bsast\b/ &&
           $SAST_DEFAULT_ANALYZERS =~ /security-code-scan/ &&
           $CI_PROJECT_REPOSITORY_LANGUAGES =~ /\b(c\#|visual basic\b)/
-
-sobelow-sast:
-  extends: .sast-analyzer
-  image:
-    name: "$SAST_ANALYZER_IMAGE_PREFIX/sobelow:$SAST_ANALYZER_IMAGE_TAG"
-  only:
-    variables:
-      - $GITLAB_FEATURES =~ /\bsast\b/ &&
-          $SAST_DEFAULT_ANALYZERS =~ /sobelow/ &&
-          $CI_PROJECT_REPOSITORY_LANGUAGES =~ /elixir/
-
-spotbugs-sast:
-  extends: .sast-analyzer
-  image:
-    name: "$SAST_ANALYZER_IMAGE_PREFIX/spotbugs:$SAST_ANALYZER_IMAGE_TAG"
-  only:
-    variables:
-      - $GITLAB_FEATURES =~ /\bsast\b/ &&
-          $SAST_DEFAULT_ANALYZERS =~ /spotbugs/ &&
-          $CI_PROJECT_REPOSITORY_LANGUAGES =~ /java\b/
 
 tslint-sast:
   extends: .sast-analyzer
