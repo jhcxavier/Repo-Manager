@@ -7,7 +7,7 @@ import style from "./index.module.scss";
 const Login = () => {
     const { actions } = useContext(Context)
     const [apiToken, setApiToken] = useState("");
-    const [user, setUser]=useState("")
+    const [user, setUser] = useState("")
     const navigate = useNavigate()
     return (
         <>
@@ -28,25 +28,23 @@ const Login = () => {
             </div>
 
             <div className={style.content}>
-                <div>
-
-                <input onChange={(e)=>setUser(e.target.value)} />
+                <div className={style.labelWrapper}>
+                <span className={style.label}>Username</span>
+                    <input onChange={(e) => setUser(e.target.value)} />
                 </div>
-                <div>
-                <span className={style.apiKey}>Api Key</span>
-                <input onChange={(e) => setApiToken(e.target.value)} />
+                <div className={style.labelWrapper}>
+                    <span className={style.label}>Api Key</span>
+                    <input onChange={(e) => setApiToken(e.target.value)} />
+                </div>
+
                 <button className={style.connect} onClick={() => {
-                    window.sessionStorage.setItem("issues", null);
-                    window.sessionStorage.setItem("repos", null);
-                    console.log("userrrrrrr", user)
-                    actions.getData(1,  apiToken, user)
-                    navigate("/home")
+                        window.sessionStorage.setItem("issues", null);
+                        window.sessionStorage.setItem("repos", null);
+                        actions.getData(1, apiToken, user)
+                        navigate("/home")
 
 
-                }}>Connect</button>
-                </div>
-                
-
+                    }}>Connect</button>
             </div>
         </>
     )
