@@ -7,8 +7,8 @@ import style from "./index.module.scss";
 const Login = () => {
     const { actions } = useContext(Context)
     const [apiToken, setApiToken] = useState("");
+    const [user, setUser]=useState("")
     const navigate = useNavigate()
-
     return (
         <>
             <div className={style.header}>
@@ -28,14 +28,24 @@ const Login = () => {
             </div>
 
             <div className={style.content}>
+                <div>
+
+                <input onChange={(e)=>setUser(e.target.value)} />
+                </div>
+                <div>
                 <span className={style.apiKey}>Api Key</span>
                 <input onChange={(e) => setApiToken(e.target.value)} />
                 <button className={style.connect} onClick={() => {
-
-                    actions.getData(1, apiToken)
+                    window.sessionStorage.setItem("issues", null);
+                    window.sessionStorage.setItem("repos", null);
+                    console.log("userrrrrrr", user)
+                    actions.getData(1,  apiToken, user)
                     navigate("/home")
 
+
                 }}>Connect</button>
+                </div>
+                
 
             </div>
         </>

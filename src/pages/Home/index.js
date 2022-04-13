@@ -25,12 +25,13 @@ const Home = () => {
 
     useEffect(() => {
         console.log("issues", issues)
-        // setIssues(store.issues)
-        // window.sessionStorage.setItem("issues", JSON.stringify(store.issues));
-        // if(repos.length>0){
-        //     window.sessionStorage.setItem("repos", JSON.stringify(store.repos));
-        // }
-        setIssues(store.issues)
+        const sessionIssues = JSON.parse(window.sessionStorage.getItem("issues"))
+        if(store.issues.length > 0){
+            setIssues(store.issues)
+            window.sessionStorage.setItem("issues", JSON.stringify(store.issues));
+        }else{
+            setIssues(sessionIssues)
+        }
     }, [store.issues])
 
 
@@ -50,7 +51,7 @@ const Home = () => {
                 </div>
                 <div className={style.column}>
                     
-                    {issues.map(issue => (
+                    {issues&&issues.map(issue => (
                         <Issues key={issue.id} issue={issue} />
                     ))}
                 </div>
