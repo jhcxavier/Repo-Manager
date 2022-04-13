@@ -22,6 +22,7 @@ const getState = ({ getStore, setStore, getActions }) => {
                 
                     .then(res => res.json())
                     .then(res => {
+                        console.log(res, "res")
                         setStore({token:token})
                         setStore({repos:[...getStore().repos, ...res.items]})
                         setStore({isLoggedin:true})
@@ -45,6 +46,7 @@ const getState = ({ getStore, setStore, getActions }) => {
 
                     .then(res => res.json())
                     .then(res => {
+                        console.log("issuesss",res)
                         setStore({issues:res})
                     })
             },

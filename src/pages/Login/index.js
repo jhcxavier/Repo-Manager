@@ -5,11 +5,9 @@ import style from "./index.module.scss";
 
 
 const Login = () => {
-    const { store, actions } = useContext(Context)
+    const { actions } = useContext(Context)
     const [apiToken, setApiToken] = useState("");
-    const [isConnected, setIsConnected] = useState(store.isLoggedin)
     const navigate = useNavigate()
-
 
     return (
         <>
