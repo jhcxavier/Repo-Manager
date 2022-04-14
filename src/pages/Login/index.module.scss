@@ -27,13 +27,9 @@
     text-align: center;
 }
 .label{
-    // background-color: #0869DA;
     color:#0869DA;
     font-weight: bold;
-  
-    // padding: 2px;
     font-size: 12px;
-    
 }
 .labelWrapper{
     margin-top: 10px;
@@ -56,16 +52,22 @@ input{
 }
 .panel{
     @include s-screen-view{
-        width: 335px;
+        width: 500px;
         margin-top:5px;
         padding:5px;
         border-radius: 5px;
+        padding:5px;
+        display: table;
+        margin: 0 auto;
     }
     @include xs-screen-view{
         width: 335px;
         margin-top:5px;
         padding:5px;
         border-radius: 5px;
+        padding:5px;
+        display: table;
+        margin: 0 auto;
     }
     margin-top: 15px;
     background-color: #F6F8FA;
