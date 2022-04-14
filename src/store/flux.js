@@ -6,7 +6,7 @@ const getState = ({ getStore, setStore, getActions }) => {
             invalidToken: false,
             userData: null,
             isLoggedin: false,
-            token: "",
+            token: null,
             repos: [],
             issues: []
         },

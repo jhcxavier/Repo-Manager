@@ -26,11 +26,14 @@ const Home = () => {
     useEffect(() => {
         const sessionIssues = JSON.parse(window.sessionStorage.getItem("issues"))
         if (store.issues.length > 0) {
-
             setIssues(store.issues)
             window.sessionStorage.setItem("issues", JSON.stringify(store.issues));
         } else {
-            setIssues(sessionIssues)
+            if(store.token){
+                setIssues(store.issues)
+            }else{
+                setIssues(sessionIssues)
+            }
         }
     }, [store.issues])
 
