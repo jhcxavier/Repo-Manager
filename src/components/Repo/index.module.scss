@@ -6,4 +6,24 @@
     margin:10px;
     padding:10px;
     border-radius: 8px;
+    width: 100%;
+}
+.full{
+    
+    // display:inline-flex;
+    @include s-screen-view{
+        display: none;
+    }
+    @include xs-screen-view{
+        display: none;
+    }
+}
+.mobile{
+    font-size: 14px;
+    @include m-screen-view{
+        display:none;
+    }
+    @include l-screen-view{
+        display:none;
+    }
 }

@@ -8,7 +8,8 @@ const Repos=({repository, index})=>{
     
     return(
        <div className={styles.repoWrapper} onClick={()=>actions.getIssues(url[0], store.token)}>
-          <h3>{index+1}. {repository.name}</h3> 
+          <h3 className={styles.full}>{index+1}. {repository.name}</h3> 
+          <h3 className={styles.mobile}>{repository.name}</h3>
        </div>
     )
 }

@@ -46,11 +46,9 @@ const Home = () => {
         <>
             <div className={style.root}>
                 <div className={style.row}>
-                    <div className={style.column} >
+                    <div className={style.column1} >
                         {repos && repos.map((repo, index) => (
-                            <div key={repo.id}>
-                                <Repos repository={repo} index={index} />
-                            </div>
+                             <Repos key={repo.id}repository={repo} index={index} />
                         ))}
                     </div>
                     {issues && issues.length > 0 ?

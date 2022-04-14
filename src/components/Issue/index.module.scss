@@ -1,3 +1,4 @@
+@import "../../common/sass/variables.module.scss";
 .issueWrapper{
     background-color:#F6F8FA ;
     color:#0869DA;
@@ -13,4 +14,22 @@
 }
 .columnWrapper{
     padding-left:5px;
+}
+
+.columnWrapper > p{
+    @include s-screen-view{
+       font-size: 12px;
+    }
+    @include xs-screen-view{
+       font-size: 12px;
+    }
+}
+.columnWrapper > h3{
+    @include s-screen-view{
+        font-size: 14px;
+     }
+    @include xs-screen-view{
+        font-size: 14px;
+     }
+    
 }

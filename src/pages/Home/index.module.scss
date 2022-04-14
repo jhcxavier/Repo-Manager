@@ -5,7 +5,14 @@
     margin-right: 50px;
     display: block;
     justify-content: center;
-    
+    @include s-screen-view{
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+    @include xs-screen-view{
+      margin-left: 0px;
+      margin-right: 0px;
+    }
 }
 h3{
     margin:0;
@@ -16,11 +23,41 @@ h3{
     flex-wrap: wrap;
     width: 100%;
 }
+.row1{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 50%;
+    @include s-screen-view{
+      width: 60%;
+    }
+    @include xs-screen-view{
+      width: 45%;
+    }
+}
 .column {
     display: flex;
     flex-direction: column;
     flex-basis: 100%;
     flex: 1;
+    width: 100%;
+  }
+.column1 {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+    width: 100%;
+    @include s-screen-view{
+      width: 80px;
+      flex:none;
+      flex-direction: none;
+    }
+    @include xs-screen-view{
+      width: 80px;
+      flex:none;
+      flex-direction: none;
+    }
   }
   .logout{
     background-color: #2EA44F;
