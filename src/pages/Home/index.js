@@ -3,13 +3,11 @@ import Repos from '../../components/Repo';
 import { Context } from '../../store/appContext';
 import style from "./index.module.scss";
 import Issues from '../../components/Issue';
-import { useNavigate } from 'react-router-dom';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 
 const Home = () => {
     const { store } = useContext(Context)
-
     const [issues, setIssues] = useState(store.issues)
     const [repos, setRepos] = useState([])
 
@@ -45,6 +43,7 @@ const Home = () => {
         window.sessionStorage.setItem("issues", JSON.stringify(updatedList));
         setIssues(updatedList);
     }
+
     return (
         <>
             <div className={style.root}>
@@ -54,7 +53,7 @@ const Home = () => {
                              <Repos key={repo.id}repository={repo} index={index} />
                         ))}
                     </div>
-                    {issues && issues.length > 0 ?
+                    {issues && issues.length > 0 ? (
                         <DragDropContext onDragEnd={handleDragEnd}>
                             <Droppable droppableId='issues'>
                                 {(provided) => (
@@ -75,7 +74,12 @@ const Home = () => {
                                     </ul>
                                 )}
                             </Droppable>
-                        </DragDropContext> : <div className={style.column} />}
+                        </DragDropContext>
+                    ) : (
+                        <div className={style.noIssues}>
+                            {store.selectedRepo !== null && <h3>No issues were found for this repo.</h3>}
+                        </div>
+                    )}
                 </div>
             </div>
         </>
