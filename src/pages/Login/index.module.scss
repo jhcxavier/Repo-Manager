@@ -35,9 +35,9 @@
     margin-top: 10px;
 }
 .content{
-    margin-top:50px;
-   display: flex;
-   justify-content: center;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
 }
 input{
     border-radius: 0;
@@ -45,10 +45,16 @@ input{
     width: 97%;
 }
 .connect{
-    margin-top: 10px;
+    margin-top: 20px;
+    border-radius: 3px;
+    padding: 5px 0 5px 0;
     background-color: #2EA44F;
     color:white;
     border:none;
+}
+.loginError {
+    color: red;
+    margin-top: 20px;
 }
 .panel{
     @include s-screen-view{

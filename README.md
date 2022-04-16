@@ -1,18 +1,18 @@
-# Getting Started with Create React App
+# Getting Started with Repo Manager
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+1. In the project directory, run:
 
-In the project directory, you can run:
+  ```bash
+  npm i
+  npm start
+  ```
 
-### `npm i`
-### `npm start`
-
-- To Successful run this app you need to access your Github account
-- On the top right corner, click on your profile
-- Chosse Settings, then on the left Menu, scroll all the way down and select <> Developer Settings.
-- After doing this selection there will be a Manu on the left hand corner, select Personal Access Tokens.
-- Generate a new token, with the select scopes "repo"
-- use that token to login the application.
-
+2. You will need a Github access token. Follow these steps to generate a new token:
+    - In your Github account, go to your profile (click on your avatar on the top right corner).
+    - Then click on `Settings`.
+    - On the left Menu, click on the last item: `<> Developer settings`.
+    - Select `Personal Access Tokens`.
+    - Generate a new token, with the selected scopes: `repo`.
+    - Use this token to login to the application.

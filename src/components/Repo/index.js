@@ -7,7 +7,7 @@ const Repos=({repository, index})=>{
     const url = repository.issues_url.split("{")
     
     return(
-       <div className={styles.repoWrapper} onClick={()=>actions.getIssues(url[0], store.token)}>
+       <div className={styles.repoWrapper} onClick={()=>actions.getIssues(url[0], store.token, repository.name)}>
           <h3 className={styles.full}>{index+1}. {repository.name}</h3> 
           <h3 className={styles.mobile}>{repository.name}</h3>
        </div>
