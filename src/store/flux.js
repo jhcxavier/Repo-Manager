@@ -14,8 +14,7 @@ const getState = ({ getStore, setStore, getActions }) => {
             getToken: (token) => {
                 setStore({ token: token })
             },
-            getData: (page, token, user) => {
-                
+            getData: (page, token, user) => {  
                 fetch(`https://api.github.com/search/repositories?q=user:${user}&per_page=${reposPerPage}&page=${page}`, {
                     headers: {
                         "Authorization": `Token ${token}`

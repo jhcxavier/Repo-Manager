@@ -5,10 +5,10 @@ import style from "./index.module.scss";
 
 
 const Login = () => {
-    const { actions } = useContext(Context)
+    const { actions } = useContext(Context);
     const [apiToken, setApiToken] = useState("");
-    const [user, setUser] = useState("")
-    const navigate = useNavigate()
+    const [user, setUser] = useState("");
+    const navigate = useNavigate();
     return (
         <>
             <div className={style.header}>
